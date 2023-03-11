@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TCG Card Generator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-brand" href="#">TCG Card Generator</a>
+          </div>
+      </nav>
+      
+      <div class="container">
+        <h2>TCG Card Generator</h2>
+        <form>
+            <div class="form-group">
+                <label for="card-rarity">Card Rarity:</label>
+                <select id="card-rarity" class="form-control">
+                  <option value="Common">Common</option>
+                  <option value="Uncommon">Uncommon</option>
+                  <option value="Rare">Rare</option>
+                  <option value="Ultra Rare">Ultra Rare</option>
+                  <option value="Legendary">Legendary</option>
+                </select>
+              </div>              
+          <div class="form-group">
+            <label for="card-image">Card Image URL:</label>
+            <input type="text" class="form-control" id="card-image">
+          </div>
+          <div class="form-group">
+            <label for="card-health">Card Health:</label>
+            <input type="number" class="form-control" id="card-health">
+          </div>
+          <div class="form-group">
+            <label for="card-attack">Card Attack Damage:</label>
+            <input type="number" class="form-control" id="card-attack">
+          </div>
+          <div class="form-group">
+            <label for="card-defense">Card Defense:</label>
+            <input type="number" class="form-control" id="card-defense">
+          </div>
+          <button type="submit" class="btn btn-default">Generate Card</button>
+        </form>
+      </div>
+      
+      <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent the form from submitting and refreshing the page
+      
+          // Get the input values from the form
+          const cardRarity = document.querySelector('#card-rarity').value;
+          const cardImage = document.querySelector('#card-image').value;
+          const cardHealth = document.querySelector('#card-health').value;
+          const cardAttack = document.querySelector('#card-attack').value;
+          const cardDefense = document.querySelector('#card-defense').value;
+      
+          // Create a new div to display the TCG card
+          const cardContainer = document.createElement('div');
+          cardContainer.classList.add('card-container');
+          document.body.appendChild(cardContainer);
+      
+          // Create the card elements and set their values
+          const cardRarityEl = document.createElement('div');
+          cardRarityEl.classList.add('card-rarity');
+          cardRarityEl.innerText = cardRarity;
+          cardContainer.appendChild(cardRarityEl);
+      
+          const cardImageEl = document.createElement('img');
+          cardImageEl.classList.add('card-image');
+          cardImageEl.src = cardImage;
+          cardContainer.appendChild(cardImageEl);
+      
+          const cardHealthEl = document.createElement('div');
+          cardHealthEl.classList.add('card-health');
+          cardHealthEl.innerText = `Health: ${cardHealth}`;
+          cardContainer.appendChild(cardHealthEl);
+      
+          const cardAttackEl = document.createElement('div');
+          cardAttackEl.classList.add('card-attack');
+          cardAttackEl.innerText = `Attack Damage: ${cardAttack}`;
+          cardContainer.appendChild(cardAttackEl);
+      
+          const cardDefenseEl = document.createElement('div');
+          cardDefenseEl.classList.add('card-defense');
+          cardDefenseEl.innerText = `Defense: ${cardDefense}`;
+          cardContainer.appendChild(cardDefenseEl);
+        });
+      </script>            
+</body>
+</html>
